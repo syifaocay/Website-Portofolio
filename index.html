@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmad Syifaul Umam | Data Analyst & Data Scientist</title>
+<!-- SEO Meta -->
+<meta name="description" content="Ahmad Syifaul Umam — Data Analyst & Data Scientist based in Semarang, Indonesia. Specializing in Python, SQL, machine learning, and business analytics.">
+<meta name="keywords" content="Data Analyst, Data Scientist, Machine Learning, Python, SQL, Semarang, Indonesia">
+<meta name="author" content="Ahmad Syifaul Umam">
+
+<!-- Open Graph (untuk preview di LinkedIn, WhatsApp, dll) -->
+<meta property="og:title" content="Ahmad Syifaul Umam | Data Analyst & Data Scientist">
+<meta property="og:description" content="Transforming raw data into actionable business insights. Explore my projects in ML and analytics.">
+<meta property="og:image" content="https://github.com/syifaocay/Website-Portofolio/blob/main/profile.jpg?raw=true"> <!-- ganti dengan URL foto asli -->
+<meta property="og:url" content="https://github.com/syifaocay/Website-Portofolio"> <!-- ganti dengan URL deploy -->
+<meta property="og:type" content="website">
+
+<!-- Twitter Card (opsional) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ahmad Syifaul Umam | Data Analyst & Data Scientist">
+<meta name="twitter:description" content="Transforming raw data into actionable business insights.">
+<meta name="twitter:image" content="https://github.com/syifaocay/Website-Portofolio/blob/main/profile.jpg?raw=true">
+<script>
+/* ANTI-FLASH */
+(function(){
+  var s=localStorage.getItem('au-theme')||'system';
+  var dark=s==='dark'||(s==='system'&&matchMedia('(prefers-color-scheme:dark)').matches);
+  document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+})();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">AU</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+</div>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" onclick="scrollTop()">
+      <div class="logo-mark">AU</div>
+      <span class="logo-name">Ahmad Syifaul Umam</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <label class="theme-toggle" aria-label="Toggle theme">
+        <input type="checkbox" id="themeCheckbox" onchange="Theme.toggle()">
+        <div class="toggle-track">
+          <span class="toggle-icon-dark">🌙</span>
+          <span class="toggle-icon-light">☀️</span>
+          <div class="toggle-knob"></div>
+        </div>
+      </label>
+      <a href="https://drive.google.com/file/d/1qpgLCViA_AEbsx6eHB1Pxl_OT1IbfFSI/view" target="_blank" class="btn-ghost">My CV</a>
+      <a href="https://github.com/syifaocay" target="_blank" class="btn-primary">GitHub</a>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="toggleMobileNav()">✕</button>
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#skills" onclick="toggleMobileNav()">Skills</a>
+  <a href="#projects" onclick="toggleMobileNav()">Projects</a>
+  <a href="#experience" onclick="toggleMobileNav()">Experience</a>
+  <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+  <div class="mobile-theme-row">
+    <span>Theme</span>
+    <label class="theme-toggle" aria-label="Toggle theme">
+      <input type="checkbox" onchange="Theme.toggle()">
+      <div class="toggle-track">
+        <span class="toggle-icon-dark">🌙</span>
+        <span class="toggle-icon-light">☀️</span>
+        <div class="toggle-knob"></div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-grid"></div>
+  <div class="hero-spotlight-follow" id="heroSpotlight"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="badge"><div class="pulse-dot"></div>Open to Data Roles · Semarang, Indonesia</div>
+      </div>
+      <div class="hero-h1">
+        <h1>Ahmad<br>Syifaul <span class="gradient-text">Umam</span></h1>
+      </div>
+      <div class="hero-role">
+        <div class="role-line">
+          <span class="role-tag" id="roleText">Data Analyst</span>
+          <span class="cursor-blink">|</span>
+        </div>
+      </div>
+      <div class="hero-desc">
+        <p class="hero-desc-txt">Transforming raw data into actionable business insights. Bridging technical excellence with real-world impact through analytics and machine learning.</p>
+      </div>
+      <div class="hero-ctas">
+        <div class="hero-cta-row">
+          <a href="#projects" class="btn-lg btn-lg-primary mag-btn">Explore Projects →</a>
+          <a href="https://drive.google.com/file/d/1qpgLCViA_AEbsx6eHB1Pxl_OT1IbfFSI/view" target="_blank" class="btn-lg btn-lg-outline">My CV</a>
+        </div>
+      </div>
+      <div class="hero-social">
+        <div class="hero-social-row">
+          <a href="https://github.com/syifaocay" target="_blank" class="social-item"><span class="social-icon">🐙</span><div><div class="social-label">GitHub</div><div class="social-val">@syifaocay</div></div></a>
+          <a href="mailto:syifaul000@gmail.com" class="social-item"><span class="social-icon">✉️</span><div><div class="social-label">Email</div><div class="social-val">syifaul000@gmail.com</div></div></a>
+          <a href="https://www.linkedin.com/in/ahmad-syifaul-umam-a38057214/" target="_blank" class="social-item"><span class="social-icon">💼</span><div><div class="social-label">LinkedIn</div><div class="social-val">Ahmad Syifaul</div></div></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-wrap">
+        <div class="photo-tilt" id="photoTilt">
+          <div class="tilt-glow" id="tiltGlow"></div>
+          <div class="photo-frame">
+            <img src="profile.jpg" alt="Ahmad Syifaul Umam">
+            <div class="photo-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">Chapter 01</div>
+    <h2>About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Data Analyst with a background in Informatics Engineering and hands-on experience building end-to-end machine learning pipelines and data analysis projects across <strong>retail</strong> and <strong>telecom</strong> industries.</p>
+        <p>Proficient in Python, SQL, and data visualization tools (Tableau, Looker Studio). Complemented by 2 years of customer-facing experience at <strong>PT Bank Central Asia Tbk</strong>, bringing strong business context and stakeholder communication skills.</p>
+        <p>Currently seeking opportunities where I can apply data-driven thinking to solve real business challenges and drive measurable impact.</p>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-big">2+</div><div class="stat-caption">Years Banking Experience</div></div>
+          <div class="stat-box"><div class="stat-big">3</div><div class="stat-caption">Major ML Projects</div></div>
+          <div class="stat-box"><div class="stat-big">3</div><div class="stat-caption">End-to-End Data Projects</div></div>
+        </div>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card glow-card reveal"><div class="glow-inner" style="display:flex;align-items:flex-start;gap:16px"><div class="hi-icon">🎓</div><div><div class="hi-title">Informatics Engineering</div><div class="hi-desc">Bachelor's degree from Universitas Dian Nuswantoro, 2019–2023.</div></div></div></div>
+        <div class="highlight-card glow-card reveal"><div class="glow-inner" style="display:flex;align-items:flex-start;gap:16px"><div class="hi-icon">🏦</div><div><div class="hi-title">Banking Industry Context</div><div class="hi-desc">2 years at PT Bank Central Asia Tbk as Customer Service Online.</div></div></div></div>
+        <div class="highlight-card glow-card reveal"><div class="glow-inner" style="display:flex;align-items:flex-start;gap:16px"><div class="hi-icon">🤖</div><div><div class="hi-title">Data Science Bootcamp Graduate</div><div class="hi-desc">Purwadhika Digital Technology School, Oct 2025–Apr 2026.</div></div></div></div>
+        <div class="highlight-card glow-card reveal"><div class="glow-inner" style="display:flex;align-items:flex-start;gap:16px"><div class="hi-icon">📍</div><div><div class="hi-title">Based in Semarang, Indonesia</div><div class="hi-desc">Open to remote and hybrid data roles across Indonesia and globally.</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Chapter 02</div>
+    <h2>Core Competencies</h2>
+    <p class="section-sub">Technical skills built through real projects and industry experience.</p>
+    <div class="skills-grid">
+      <div class="skill-card glow-card reveal"><div class="glow-inner"><div class="skill-icon">🐍</div><div class="skill-title">Programming</div><ul class="skill-list"><li>Python (Pandas, NumPy, Scikit-learn)</li><li>SQL & MySQL</li><li>Data pipeline development</li></ul><div class="skill-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Pandas</span><span class="tag">NumPy</span></div></div></div>
+      <div class="skill-card glow-card reveal"><div class="glow-inner"><div class="skill-icon">📊</div><div class="skill-title">Data Analysis</div><ul class="skill-list"><li>Exploratory Data Analysis</li><li>Statistical hypothesis testing</li><li>Data storytelling & reporting</li></ul><div class="skill-tags"><span class="tag">EDA</span><span class="tag">Statistics</span><span class="tag">Wrangling</span></div></div></div>
+      <div class="skill-card glow-card reveal"><div class="glow-inner"><div class="skill-icon">🤖</div><div class="skill-title">Machine Learning</div><ul class="skill-list"><li>Classification & Regression models</li><li>Hyperparameter tuning (GridSearchCV)</li><li>Imbalanced learning (SMOTE, NCR)</li></ul><div class="skill-tags"><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">SMOTE</span></div></div></div>
+      <div class="skill-card glow-card reveal"><div class="glow-inner"><div class="skill-icon">📈</div><div class="skill-title">Visualization & Tools</div><ul class="skill-list"><li>Tableau, Looker Studio dashboards</li><li>Matplotlib, Seaborn, Plotly</li><li>Git, Streamlit, Excel</li></ul><div class="skill-tags"><span class="tag">Tableau</span><span class="tag">Looker</span><span class="tag">Streamlit</span><span class="tag">Git</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="projects-header">
+      <div><div class="section-label">Chapter 03</div><h2>Impactful Projects</h2></div>
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all" onclick="filterProjects(this)">All</button>
+        <button class="filter-btn" data-filter="analytics" onclick="filterProjects(this)">Analytics</button>
+        <button class="filter-btn" data-filter="ml" onclick="filterProjects(this)">Machine Learning</button>
+      </div>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE — enhanced timeline -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Chapter 04</div>
+    <h2>Experience & Education</h2>
+    <div class="timeline-wrap" id="timelineWrap">
+      <div class="timeline-track"></div>
+      <div class="timeline-progress" id="timelineProgress"></div>
+
+      <div class="tl-item" data-tl>
+        <div class="tl-dot active">🏦</div>
+        <div class="tl-content">
+          <div class="tl-period">NOV 2023 — OCT 2025</div>
+          <div class="tl-role">Customer Service Online</div>
+          <div class="tl-company">PT Bank Central Asia Tbk</div>
+          <ul class="tl-bullets">
+            <li>Handled 50+ daily inbound calls with consistently high CSAT scores</li>
+            <li>Transitioned to WhatsApp support managing 70+ chats/day</li>
+            <li>Cross-functional collaboration on complex banking products and escalations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item" data-tl>
+        <div class="tl-dot active">🎯</div>
+        <div class="tl-content">
+          <div class="tl-period">OCT 2025 — APR 2026</div>
+          <div class="tl-role">Data Science & Machine Learning Bootcamp</div>
+          <div class="tl-company">Purwadhika Digital Technology School</div>
+          <ul class="tl-bullets">
+            <li>End-to-end ML pipelines: data wrangling, feature engineering, model deployment</li>
+            <li>Built 3 capstone projects in retail analytics and telecom churn prediction</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item" data-tl>
+        <div class="tl-dot">🎓</div>
+        <div class="tl-content">
+          <div class="tl-period">2019 — 2023</div>
+          <div class="tl-role">Bachelor of Informatics Engineering</div>
+          <div class="tl-company">Universitas Dian Nuswantoro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Chapter 05</div>
+    <h2>Get In Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-cta">
+        <h3>Have a data challenge?<br>Let's talk.</h3>
+        <p>Interested in collaborating on data projects, analytics work, or just want to connect? I'd love to hear from you.</p>
+        <a href="mailto:syifaul000@gmail.com" class="contact-email">syifaul000@gmail.com</a>
+      </div>
+      <div class="contact-cards">
+        <a href="https://www.linkedin.com/in/ahmad-syifaul-umam-a38057214/" target="_blank" class="contact-card glow-card reveal"><div class="glow-inner" style="display:flex;align-items:center;justify-content:space-between;width:100%"><div class="cc-left"><div class="cc-icon">💼</div><div><div class="cc-label">LinkedIn</div><div class="cc-val">Ahmad Syifaul Umam</div></div></div><div class="cc-arrow">→</div></div></a>
+        <a href="https://github.com/syifaocay" target="_blank" class="contact-card glow-card reveal"><div class="glow-inner" style="display:flex;align-items:center;justify-content:space-between;width:100%"><div class="cc-left"><div class="cc-icon">🐙</div><div><div class="cc-label">GitHub</div><div class="cc-val">@syifaocay</div></div></div><div class="cc-arrow">→</div></div></a>
+        <a href="https://drive.google.com/file/d/1qpgLCViA_AEbsx6eHB1Pxl_OT1IbfFSI/view" target="_blank" class="contact-card glow-card reveal"><div class="glow-inner" style="display:flex;align-items:center;justify-content:space-between;width:100%"><div class="cc-left"><div class="cc-icon">📄</div><div><div class="cc-label">Resume / CV</div><div class="cc-val">View full resume</div></div></div><div class="cc-arrow">→</div></div></a>
+        <a href="mailto:syifaul000@gmail.com" class="contact-card glow-card reveal"><div class="glow-inner" style="display:flex;align-items:center;justify-content:space-between;width:100%"><div class="cc-left"><div class="cc-icon">✉️</div><div><div class="cc-label">Email</div><div class="cc-val">syifaul000@gmail.com</div></div></div><div class="cc-arrow">→</div></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 <span>Ahmad Syifaul Umam</span> · Data Analyst & Data Scientist · Semarang, Indonesia</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
