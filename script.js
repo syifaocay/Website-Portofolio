@@ -17,6 +17,8 @@ const Theme = (() => {
   return { toggle };
 })();
 
+
+
 /* ══════════════════════════════════════
    PAGE LOADER
 ══════════════════════════════════════ */
@@ -92,16 +94,52 @@ document.querySelectorAll('a,button,.filter-btn,.theme-toggle').forEach(el=>{
 /* ══════════════════════════════════════
    GLOW CARDS
 ══════════════════════════════════════ */
+const isTouchDevice = matchMedia('(hover:none) and (pointer:coarse)').matches;
+let glowScrollIO = null;
+
 function bindGlowCards(){
   document.querySelectorAll('.glow-card').forEach(card=>{
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      card.style.setProperty('--cx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
-      card.style.setProperty('--cy',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
-    });
-    card.addEventListener('mouseenter',()=>card.classList.add('pulsing'));
-    card.addEventListener('mouseleave',()=>card.classList.remove('pulsing'));
+    if(isTouchDevice){
+      if(card.dataset.touchGlowBound) return; // hindari binding ganda saat re-render
+      card.dataset.touchGlowBound = '1';
+      card.addEventListener('touchstart',e=>{
+        const t = e.touches[0];
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--cx', ((t.clientX-r.left)/r.width*100).toFixed(1)+'%');
+        card.style.setProperty('--cy', ((t.clientY-r.top)/r.height*100).toFixed(1)+'%');
+        card.classList.add('touch-glow','pulsing');
+      },{passive:true});
+      card.addEventListener('touchend',()=>{
+        setTimeout(()=>card.classList.remove('touch-glow','pulsing'), 900);
+      },{passive:true});
+    } else {
+      card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect();
+        card.style.setProperty('--cx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+        card.style.setProperty('--cy',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+      });
+      card.addEventListener('mouseenter',()=>card.classList.add('pulsing'));
+      card.addEventListener('mouseleave',()=>card.classList.remove('pulsing'));
+    }
   });
+  if(isTouchDevice) observeGlowScroll();
+}
+
+/* Auto-glow ringan saat card masuk area tengah layar (pengganti hover di mobile) */
+function observeGlowScroll(){
+  if(!glowScrollIO){
+    glowScrollIO = new IntersectionObserver(entries=>entries.forEach(entry=>{
+      const el = entry.target;
+      if(entry.isIntersecting){
+        el.style.setProperty('--cx','50%');
+        el.style.setProperty('--cy','38%');
+        el.classList.add('touch-glow');
+      } else {
+        el.classList.remove('touch-glow');
+      }
+    }),{threshold:.55});
+  }
+  document.querySelectorAll('.glow-card').forEach(card=>glowScrollIO.observe(card));
 }
 
 /* ══════════════════════════════════════
@@ -147,7 +185,7 @@ function observeReveal(){
     };
     this.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${gc(this.ci)},${this.a.toFixed(2)})`;ctx.fill()};
   }
-  function initP(){particles=Array.from({length:Math.min(Math.floor(W*H/9000),120)},()=>new Particle())}
+  function initP(){const cap=isMobile()?40:120;particles=Array.from({length:Math.min(Math.floor(W*H/9000),cap)},()=>new Particle())}
   function drawLines(){
     const c1=gc(1);
     for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
