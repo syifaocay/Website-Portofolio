@@ -12,8 +12,8 @@
 <!-- Open Graph (untuk preview di LinkedIn, WhatsApp, dll) -->
 <meta property="og:title" content="Ahmad Syifaul Umam | Data Analyst & Data Scientist">
 <meta property="og:description" content="Transforming raw data into actionable business insights. Explore my projects in ML and analytics.">
-<meta property="og:image" content="https://github.com/syifaocay/Website-Portofolio/blob/main/profile.jpg?raw=true"> <!-- ganti dengan URL foto asli -->
-<meta property="og:url" content="https://ahmadsyifaul.netlify.app/"> <!-- ganti dengan URL deploy -->
+<meta property="og:image" content="https://github.com/syifaocay/Website-Portofolio/blob/main/profile.jpg?raw=true">
+<meta property="og:url" content="https://ahmadsyifaul.netlify.app/">
 <meta property="og:type" content="website">
 
 <!-- Twitter Card (opsional) -->
@@ -59,17 +59,17 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta">
-      <label class="theme-toggle" aria-label="Toggle theme">
-        <input type="checkbox" id="themeCheckbox" onchange="Theme.toggle()">
-        <div class="toggle-track">
-          <span class="toggle-icon-dark">🌙</span>
-          <span class="toggle-icon-light">☀️</span>
-          <div class="toggle-knob"></div>
-        </div>
-      </label>
       <a href="https://drive.google.com/file/d/1qpgLCViA_AEbsx6eHB1Pxl_OT1IbfFSI/view" target="_blank" class="btn-ghost">My CV</a>
       <a href="https://github.com/syifaocay" target="_blank" class="btn-primary">GitHub</a>
     </div>
+    <label class="theme-toggle" aria-label="Toggle theme">
+      <input type="checkbox" id="themeCheckbox" onchange="Theme.toggle()">
+      <div class="toggle-track">
+        <span class="toggle-icon-dark">🌙</span>
+        <span class="toggle-icon-light">☀️</span>
+        <div class="toggle-knob"></div>
+      </div>
+    </label>
     <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -83,6 +83,7 @@
   <a href="#projects" onclick="toggleMobileNav()">Projects</a>
   <a href="#experience" onclick="toggleMobileNav()">Experience</a>
   <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+  <a href="https://drive.google.com/file/d/1qpgLCViA_AEbsx6eHB1Pxl_OT1IbfFSI/view" target="_blank" class="btn-primary" style="margin-top:8px">Download CV</a>
   <div class="mobile-theme-row">
     <span>Theme</span>
     <label class="theme-toggle" aria-label="Toggle theme">
@@ -101,6 +102,8 @@
   <canvas id="hero-canvas"></canvas>
   <div class="hero-grid"></div>
   <div class="hero-spotlight-follow" id="heroSpotlight"></div>
+  <div class="ambient-blob ambient-blob-1"></div>
+  <div class="ambient-blob ambient-blob-2"></div>
   <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-badge">
