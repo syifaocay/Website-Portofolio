@@ -34,21 +34,98 @@ window.addEventListener('load', () => {
    PROJECTS
 ══════════════════════════════════════ */
 const projects = [
-  {title:"Customer Segmentation Analysis – Supermarket",category:"analytics",desc:"Identified high-value customer segments to optimize marketing spend and campaign targeting.",metrics:"Income-spend correlation: 0.79\nCampaign 5 best performer",tech:["Python","Pandas","Seaborn","K-Means"],link:"https://github.com/syifaocay/Analisa-Segment-Pelanggan-Supermarket"},
-  {title:"Customer Churn Prediction – Telecom",category:"ml",desc:"Built an early-warning churn model with exceptional recall to help retention teams act proactively.",metrics:"Recall: 88.37%  |  ROC-AUC: 0.832",tech:["Scikit-learn","LightGBM","SMOTE","Python"],link:"https://github.com/syifaocay/Customer-Churn-Prediction-Model"},
-  {title:"Bank Marketing Campaign Optimization",category:"ml",desc:"XGBoost model reduced telemarketing cost by ~89% by predicting term deposit likelihood.",metrics:"F1 Score: 51.29%  |  NCR Resampling",tech:["XGBoost","GridSearchCV","Python"],link:"https://github.com/jcdspurwadhika/JCDSAH-024_Delta"}
+  {
+    title: "Customer Segmentation Analysis – Supermarket",
+    category: "analytics",
+    desc: "Identified high-value customer segments to optimize marketing spend and campaign targeting.",
+    metrics: "Income-spend correlation: 0.79",
+    tech: ["Python", "Pandas", "Seaborn", "K-Means"],
+    link: "https://github.com/syifaocay/Analisa-Segment-Pelanggan-Supermarket"
+  },
+  {
+    title: "Customer Churn Prediction – Telecom",
+    category: "ml",
+    desc: "Successfully identified 228 out of 258 customers at risk of churning with model LightGBM.",
+    metrics: "Recall: 88.37%  |  ROC-AUC: 0.832",
+    tech: ["LightGBM", "Handle Imbalance", "Python"],
+    link: "https://github.com/syifaocay/Customer-Churn-Prediction-Model"
+  },
+  {
+    title: "Bank Marketing Campaign Optimization",
+    category: "ml",
+    desc: "Cut telemarketing costs by ~89% by predicting which customers were actually likely to open a term deposit",
+    metrics: "F1 Score: 51.29%  |  NCR Resampling",
+    tech: ["XGBoost", "Handle Imbalance", "Python"],
+    link: "https://github.com/jcdspurwadhika/JCDSAH-024_Delta"
+  },
+  {
+    title: "Motorcycle Sales Performance Dashboard",
+    category: "analytics",
+    type: "dashboard",
+    desc: "Interactive business dashboard to analyze motorcycle sales performance based on branch, product, sales channel, and daily trends. This dashboard helps identify best-selling products, top-performing branches, and opportunities to boost sales through data analysis.",
+    tech: ["Looker Studio", "Data Visualization"],
+    image: "dashboard-motor.png",
+    live: "https://datastudio.google.com/reporting/baf63300-3494-47b1-8e9c-111000d18abb/page/WscgF",
+    github: "https://github.com/syifaocay"
+  },
+  {
+    title: "Titanic passenger Survival Analysis Dashboard",
+    category: "analytics",
+    type: "dashboard",
+    desc: "Interactive dashboard exploring Titanic passenger survival patterns based on class, gender, and age. Designed to uncover the key factors influencing survival rates through intuitive and clear data visualizations.",
+    tech: ["Tableau", "Data Visualization"],
+    image: "dashboard-titanic.png",
+    live: "https://public.tableau.com/app/profile/ahmad.syifaul.umam/viz/TugasTitanicPassengerList/Dashboard1",
+    github: "https://github.com/syifaocay"
+  },
+  {
+    title: "Supermarket Customer Analytics Dashboard",
+    category: "analytics",
+    type: "dashboard",
+    desc: "Customer analytics dashboard analyzing shopping behavior, marketing campaign effectiveness, product category contributions, and the relationship between income and spending to support data-driven business strategies.",
+    tech: ["Tableau", "Customer Analytics"],
+    image: "dashboard-supermarket.png",
+    live: "https://public.tableau.com/app/profile/ahmad.syifaul.umam/viz/DashboardSupermarket_17646908624520/DashboardSupermarket",
+    github: "https://github.com/syifaocay"
+  }
 ];
 function renderProjects(data) {
   const g = document.getElementById('projectsGrid'); g.innerHTML='';
   data.forEach(p => {
     const tags = p.tech.map(t=>`<span class="tag">${t}</span>`).join('');
     const catClass = p.category==='ml' ? 'cat-ml' : 'cat-analytics';
+    const catLabel = p.category==='ml' ? 'Machine Learning' : 'Analytics';
     const el = document.createElement('div');
-    el.className = 'proj-card glow-card reveal';
-    el.innerHTML = `<div class="glow-inner"><div class="proj-cat ${catClass}"><span class="cat-dot"></span>${p.category==='ml'?'Machine Learning':'Analytics'}</div><div class="proj-title">${p.title}</div><div class="proj-desc">${p.desc}</div><div class="proj-metrics">${p.metrics}</div><div class="proj-tech">${tags}</div><div><a href="${p.link}" target="_blank" class="proj-link">View on GitHub →</a></div></div>`;
+    if (p.type === 'dashboard') {
+      const idx = projects.indexOf(p);
+      el.className = 'proj-card dash-card glow-card reveal';
+      el.innerHTML = `<div class="glow-inner">
+        <div class="proj-cat ${catClass}"><span class="cat-dot"></span>${catLabel}</div>
+        <div class="dash-thumb-wrap" tabindex="0" role="button" aria-label="Preview ${p.title}" onclick="openDashModal(${idx})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDashModal(${idx})}">
+          <div class="dash-thumb-media">
+            <div class="dash-thumb-placeholder" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <img src="${p.image}" alt="${p.title} preview" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="dash-thumb-overlay">
+            <div class="dash-overlay-icon">🔍</div>
+            <div class="dash-overlay-text">Preview Dashboard</div>
+            <div class="dash-overlay-sub">Click to View</div>
+          </div>
+        </div>
+        <div class="proj-title">${p.title}</div>
+        <div class="proj-desc">${p.desc}</div>
+        <div class="proj-tech">${tags}</div>
+        <div><a href="${p.live}" target="_blank" class="proj-link">Live Demo →</a></div>
+      </div>`;
+    } else {
+      el.className = 'proj-card glow-card reveal';
+      el.innerHTML = `<div class="glow-inner"><div class="proj-cat ${catClass}"><span class="cat-dot"></span>${catLabel}</div><div class="proj-title">${p.title}</div><div class="proj-desc">${p.desc}</div><div class="proj-metrics">${p.metrics}</div><div class="proj-tech">${tags}</div><div><a href="${p.link}" target="_blank" class="proj-link">View on GitHub →</a></div></div>`;
+    }
     g.appendChild(el);
   });
-  bindGlowCards(); observeReveal();
+  bindGlowCards(); observeReveal(); bindDashTilt();
 }
 function filterProjects(el) {
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -141,6 +218,56 @@ function observeGlowScroll(){
   }
   document.querySelectorAll('.glow-card').forEach(card=>glowScrollIO.observe(card));
 }
+
+/* ══════════════════════════════════════
+   DASHBOARD THUMB — light 3D tilt (desktop only)
+══════════════════════════════════════ */
+function bindDashTilt(){
+  if(isTouchDevice) return;
+  const MAX=6;
+  document.querySelectorAll('.dash-thumb-wrap').forEach(wrap=>{
+    if(wrap.dataset.tiltBound) return;
+    wrap.dataset.tiltBound='1';
+    const media = wrap.querySelector('.dash-thumb-media');
+    wrap.addEventListener('mousemove', e=>{
+      const r=wrap.getBoundingClientRect();
+      const nx=(e.clientX-r.left)/r.width-.5;
+      const ny=(e.clientY-r.top)/r.height-.5;
+      media.style.transform=`rotateX(${(-ny*MAX).toFixed(2)}deg) rotateY(${(nx*MAX).toFixed(2)}deg)`;
+    });
+    wrap.addEventListener('mouseleave', ()=>{ media.style.transform=''; });
+  });
+}
+
+/* ══════════════════════════════════════
+   DASHBOARD PREVIEW MODAL
+══════════════════════════════════════ */
+function openDashModal(idx){
+  const p = projects[idx];
+  if(!p) return;
+  const img = document.getElementById('dashModalImg');
+  img.src = p.image; img.alt = p.title+' preview';
+  document.getElementById('dashModalTitle').textContent = p.title;
+  document.getElementById('dashModalOverview').textContent = p.desc;
+  document.getElementById('dashModalTech').innerHTML = p.tech.map(t=>`<span class="tag">${t}</span>`).join('');
+  const catClass = p.category==='ml' ? 'cat-ml' : 'cat-analytics';
+  const catLabel = p.category==='ml' ? 'Machine Learning' : 'Analytics';
+  const catEl = document.getElementById('dashModalCat');
+  catEl.className = 'proj-cat '+catClass;
+  catEl.innerHTML = `<span class="cat-dot"></span>${catLabel}`;
+  const liveBtn = document.getElementById('dashModalLive');
+  liveBtn.href = p.live || '#';
+  const ghBtn = document.getElementById('dashModalGithub');
+  if(p.github){ ghBtn.href = p.github; ghBtn.style.display='inline-flex'; } else { ghBtn.style.display='none'; }
+  document.getElementById('dashModalOverlay').classList.add('open');
+  document.body.classList.add('modal-open');
+}
+function closeDashModal(e){
+  if(e && e.type==='click' && e.target!==e.currentTarget) return;
+  document.getElementById('dashModalOverlay').classList.remove('open');
+  document.body.classList.remove('modal-open');
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDashModal(); });
 
 /* ══════════════════════════════════════
    MAGNETIC BUTTONS
