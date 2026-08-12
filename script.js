@@ -39,7 +39,7 @@ const projects = [
     category: "analytics",
     desc: "Identified high-value customer segments to optimize marketing spend and campaign targeting.",
     metrics: "Income-spend correlation: 0.79",
-    tech: ["Python", "Pandas", "Seaborn", "K-Means"],
+    tech: ["Python", "Pandas", "Seaborn", "matplotlib"],
     link: "https://github.com/syifaocay/Analisa-Segment-Pelanggan-Supermarket"
   },
   {
@@ -58,6 +58,14 @@ const projects = [
     tech: ["XGBoost", "Handle Imbalance", "Python"],
     link: "https://github.com/jcdspurwadhika/JCDSAH-024_Delta"
   },
+   {
+  title: "Credit Card Fraud Detection",
+  category: "ml",
+  desc: "Built an imbalanced classification model to detect rare fraudulent transactions while balancing false positives and false negatives for real-world business impact.",
+  metrics: "PR-AUC: 0.79 | Precision: 89% | Recall: 74%",
+  tech: ["Python", "Pandas", "Scikit-learn", "Random Forest", "Seaborn"],
+  link: "https://github.com/syifaocay/Credit-Card-Fraud-Detection"
+},
   {
     title: "Motorcycle Sales Performance Dashboard",
     category: "analytics",
